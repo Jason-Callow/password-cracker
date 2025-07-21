@@ -125,3 +125,13 @@ Nation-State (ASICs):
 ```
 </details>
 
+## How It Works
+
+This project demonstrates two types of password attacks:
+
+1. **Real-time Brute-force Attacks** on 4-digit PINs hashed with SHA-256 and SHA-512 (with configurable salt length).
+2. **Crack Time Estimation** for user-entered passwords using modern key derivation functions: Argon2, bcrypt, and PBKDF2.
+
+The program benchmarks how long each algorithm takes to hash the user's password on the local machine. It then estimates how long a brute-force attack would take, based on the password’s entropy and hashing speed.
+
+A range of attacker profiles (from hobbyists to nation-states) illustrate how computational resources influence crack time.
