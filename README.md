@@ -1,10 +1,18 @@
 # Password Hashing & Brute Force Demonstrator
 
-This Python-based program demonstrates key concepts in password security, including hashing, brute-force attacks, and realistic password cracking time estimation. It simulates cracking 4-digit PINs (using plaintext, SHA-256, and SHA-512 with salt) and evaluates the estimated time to crack more complex passwords hashed with Argon2, bcrypt, and PBKDF2.
+This Python-based program demonstrates core concepts in password security, including hashing, brute-force techniques, and realistic password cracking time estimation. It simulates cracking 4-digit PINs (using plaintext, SHA-256, and SHA-512 with salt) and evaluates the estimated time to crack more complex passwords hashed with Argon2, bcrypt, and PBKDF2.
 
 This is my first independent cybersecurity project, created outside of university coursework as part of my learning journey and portfolio development. It is intended as a hands-on exploration of password security fundamentals.
 
 **Tech Stack:** Python 3 • hashlib • bcrypt • argon2-cffi • pbkdf2_hmac • time • itertools • math • string • random
+
+## Features
+
+- Brute-force simulation of 4-digit PINs using plaintext, SHA-256, and SHA-512 (with salt)
+- Password crack time estimation using Argon2, bcrypt, and PBKDF2
+- Interactive command-line interface for guided exploration
+- Performance benchmarks based on the user's own hardware
+- Educational attacker profiles and limitations included
 
 ## Usage
 
@@ -79,8 +87,7 @@ Please select one of the following options:
 Enter Choice: 2
 
 Passwords in real life use a hashing tool similar to Argon2, bcrypt or PBKDF2.
-This tool allows you to enter a password, and see how long a brute force attack
-would take to crack it, based on the hashing algorithm and your systems hardware.
+This tool lets you enter a password and simulates how long a brute-force attacker would take to crack it based on its entropy and the performance of different hashing algorithms.
 
 What would you like to do?
 1) Enter a password to estimate crack time
@@ -127,17 +134,6 @@ Nation-State (ASICs):
 
 ## How It Works
 
-This project demonstrates two types of password attacks:
-
-1. **Real-time Brute-force Attacks** on 4-digit PINs hashed with SHA-256 and SHA-512 (with configurable salt length).
-2. **Crack Time Estimation** for user-entered passwords using modern key derivation functions: Argon2, bcrypt, and PBKDF2.
-
-The program benchmarks how long each algorithm takes to hash the user's password on the local machine. It then estimates how long a brute-force attack would take, based on the password’s entropy and hashing speed.
-
-A range of attacker profiles (from hobbyists to nation-states) illustrate how computational resources influence crack time.
-
-## How It Works
-
 This project demonstrates two core security concepts:
 1. Real-Time Brute-Force Attacks on Hashed PINs
 
@@ -147,7 +143,7 @@ The program allows users to select or generate a 4-digit PIN, which is then hash
 
 - SHA-512
 
-A randomly generated alphanumeric salt (with user-configurable length) is prepended to the PIN before hashing. The program performs a brute-force attack by systematically attempting every possible combination of salt and 4-digit PIN, simulating a realistic offline cracking scenario.
+A randomly generated alphanumeric salt (with user-configurable length) is added to the PIN before hashing. The program performs a brute-force attack by systematically attempting every possible combination of salt and 4-digit PIN, simulating a realistic offline cracking scenario.
 
 This demonstrates how salting significantly increases the computational complexity of cracking even a simple PIN and shows how the difficulty grows exponentially with longer salt lengths.
 
@@ -159,17 +155,16 @@ When a user enters a password, the program:
 
 - Benchmarks the time required to hash the password using three industry-standard key derivation functions:
 
-        Argon2
+  - Argon2
 
-        bcrypt
+  - bcrypt
 
-        PBKDF2-HMAC-SHA256
+  - PBKDF2-HMAC-SHA256
 
 - Calculates an estimated brute-force crack time based on the entropy and hash time:
-
+```
 Estimated Time = 2^entropy bits × time per hash
-Estimated Time = 2^entropy bits × time per hash
-
+```
 It then presents crack time estimates across four attacker profiles:
 - Hobbyist (10 hashes/second)
 - Mid-tier GPU Rig (100,000 hashes/second)
@@ -202,6 +197,7 @@ This program models brute-force attacks (i.e., trying every possible password), 
     Side-channel attacks on poorly implemented hashers
 
 This tool does not simulate those attack vectors and should not be used to draw conclusions about security in real-world systems.
+
 3. No Multi-Factor Authentication (MFA) Consideration
 
 The tool evaluates crack times based solely on password strength. In reality, many systems today implement multi-factor authentication, which significantly reduces the effectiveness of brute-force or hash cracking attacks.
