@@ -221,3 +221,5 @@ As a result, the estimated entropy and crack times are theoretical best-case sce
 - Python 3.7 or later
 - argon2-cffi
 - bcrypt
+
+*Created by Jason Callow as part of my independent cybersecurity learning journey.*
