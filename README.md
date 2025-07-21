@@ -215,3 +215,9 @@ Entropy estimation in this tool is based on character set and password length. T
     User behavior biases
 
 As a result, the estimated entropy and crack times are theoretical best-case scenarios, not guarantees.
+
+## Requirements
+
+- Python 3.7 or later
+- argon2-cffi
+- bcrypt
