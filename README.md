@@ -163,7 +163,7 @@ When a user enters a password, the program:
 
 - Calculates an estimated brute-force crack time based on the entropy and hash time:
 ```
-Estimated Time = 2^entropy bits × time per hash
+Estimated Time = 2^entropy_bits × time_per_hash
 ```
 It then presents crack time estimates across four attacker profiles:
 - Hobbyist (10 hashes/second)
